@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>あやたか撮影サービス｜新潟＆東京対応</title>
+  <style>
+    :root{
+      --bg:#fbfaf7;           /* ほのかなベージュ */
+      --card:#ffffff;         /* カード白 */
+      --ink:#2a2a2a;          /* 文字色 */
+      --muted:#6e6e6e;        /* 補助文字 */
+      --brand:#80a8c7;        /* 淡いブルー */
+      --brand-deep:#5e87a6;   /* 濃いめブルー */
+      --accent:#e8ded0;       /* 薄ベージュ */
+      --shadow:0 8px 20px rgb(0 0 0 / 6%);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:var(--brand-deep);text-decoration:none}
+    img{max-width:100%;display:block;height:auto;border-radius:12px}
+    .container{width:min(1100px,92vw);margin:0 auto}
+
+    /* ヘッダー */
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(251,250,247,.8);backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid #eee
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800}
+    .nav a.btn{padding:10px 16px;border-radius:999px;background:var(--brand);color:#fff;box-shadow:var(--shadow)}
+    .nav a.btn:hover{background:var(--brand-deep)}
+
+    /* ヒーロー */
+    .hero{padding:64px 0 32px}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .eyebrow{display:inline-block;background:var(--accent);color:#6b5f52;padding:6px 12px;border-radius:999px;font-size:12px;letter-spacing:.06em}
+    h1{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:12px 0 14px}
+    .lead{color:var(--muted);font-size:clamp(14px,2.2vw,16px)}
+    .cta{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;background:var(--brand);color:#fff;font-weight:700;box-shadow:var(--shadow)}
+    .btn:hover{background:var(--brand-deep)}
+    .btn.secondary{background:#fff;color:var(--brand-deep);border:1px solid #dde6ee}
+    .btn.secondary:hover{background:#f6fafc}
+    .hero-card{background:linear-gradient(180deg,#fff, #f7f3ed);padding:14px;border-radius:20px;box-shadow:var(--shadow)}
+
+    /* セクション共通 */
+    section{padding:56px 0}
+    .section-title{font-size:clamp(22px,3vw,30px);margin:0 0 18px}
+    .section-sub{color:var(--muted);margin:0 0 28px}
+
+    /* プラン */
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid #eee;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .badge{display:inline-block;font-size:11px;padding:6px 10px;border-radius:999px;background:var(--accent);color:#6b5f52;margin-bottom:10px}
+    .price{font-size:28px;font-weight:800;margin:8px 0 10px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .meta span{display:inline-flex;align-items:center;gap:6px;background:#f5f7f9;border:1px solid #e8eef3;padding:6px 10px;border-radius:999px}
+    .card .cta{margin-top:16px}
+
+    /* 商品撮影 横長 */
+    .wide{grid-column:1/-1;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+
+    /* ギャラリー */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .ph{background:linear-gradient(145deg,#e9eef3,#f7f3ed);border:1px dashed #d7d7d7;height:260px;border-radius:14px;display:grid;place-items:center;color:#8a8a8a}
+
+    /* 流れ */
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{background:var(--card);border:1px solid #eee;border-radius:16px;padding:18px;text-align:center}
+    .step .n{width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;margin:0 auto 10px;font-weight:800}
+
+    /* レビュー */
+    .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .quote{background:var(--card);border:1px solid #eee;border-radius:16px;padding:18px}
+    .quote p{margin:0;color:#444}
+
+    /* フッター */
+    footer{padding:28px 0 60px;border-top:1px solid #eee;margin-top:24px}
+    .footer-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* レスポンシブ */
+    @media (max-width:980px){
+      .hero .wrap{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr;}
+      .wide{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .flow{grid-template-columns:1fr 1fr}
+      .reviews{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><div class="logo">📸</div>あやたか撮影サービス</div>
+      <nav>
+        <a class="btn" href="#contact">空き状況・予約</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <span class="eyebrow">新潟＆東京対応 / 自然光のやわらかい写真</span>
+          <h1>あなたの“いま”を、最高のかたちで残す</h1>
+          <p class="lead">ポートレート・カップル・商品撮影を中心に。撮影中は楽しく会話しながら、自然体の表情と空気感を写し取ります。</p>
+          <div class="cta">
+            <a class="btn" href="#plans">プランを見る</a>
+            <a class="btn secondary" href="#gallery">作例を見る</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="https://placehold.co/900x600?text=Your+Beautiful+Photo" alt="あやたか作例" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans">
+      <div class="container">
+        <h2 class="section-title">プラン・料金</h2>
+        <p class="section-sub">迷わないシンプル設計。まずは気軽に30分からOK。</p>
+
+        <div class="plans">
+          <!-- Light -->
+          <article class="card">
+            <span class="badge">ライト</span>
+            <h3>ライトプラン</h3>
+            <p class="price">¥5,000 <small style="color:var(--muted);font-weight:600">/ 30分</small></p>
+            <div class="meta">
+              <span>⏱ 30分</span>
+              <span>📷 納品10枚</span>
+              <span>🗺 1スポット</span>
+            </div>
+            <p>SNSアイコンやプロフィール写真にぴったり。</p>
+            <div class="cta"><a class="btn" href="#contact">このプランで相談</a></div>
+          </article>
+
+          <!-- Standard -->
+          <article class="card">
+            <span class="badge">おすすめ</span>
+            <h3>スタンダードプラン</h3>
+            <p class="price">¥10,000 <small style="color:var(--muted);font-weight:600">/ 60分</small></p>
+            <div class="meta">
+              <span>⏱ 60分</span>
+              <span>📷 納品30枚</span>
+              <span>🗺 〜2スポット</span>
+            </div>
+            <p>カップル・友達・ブランドPRにおすすめ。</p>
+            <div class="cta"><a class="btn" href="#contact">このプランで相談</a></div>
+          </article>
+
+          <!-- Premium -->
+          <article class="card">
+            <span class="badge">人気</span>
+            <h3>プレミアムプラン</h3>
+            <p class="price">¥15,000 <small style="color:var(--muted);font-weight:600">/ 90分</small></p>
+            <div class="meta">
+              <span>⏱ 90分</span>
+              <span>📷 納品50枚</span>
+              <span>🗺 複数スポット</span>
+            </div>
+            <p>記念日や撮影会イベントに最適。</p>
+            <div class="cta"><a class="btn" href="#contact">このプランで相談</a></div>
+          </article>
+
+          <!-- Product (wide) -->
+          <article class="card wide">
+            <div>
+              <span class="badge">商品撮影</span>
+              <h3>商品撮影プラン</h3>
+              <p class="price">¥20,000〜 <small style="color:var(--muted);font-weight:600">/ 1〜2時間</small></p>
+              <div class="meta">
+                <span>📦 10商品</span>
+                <span>🎞 雰囲気カット</span>
+                <span>🚚 出張可</span>
+              </div>
+              <p>メニュー・EC商品・雑貨ブランドに。背景／小物の提案もOK。</p>
+              <div class="cta"><a class="btn" href="#contact">見積もりを依頼</a></div>
+            </div>
+            <img src="https://placehold.co/900x600?text=Product+Sample" alt="商品撮影サンプル">
+          </article>
+        </div>
+
+        <details style="margin-top:18px">
+          <summary>オプション・注意事項</summary>
+          <ul>
+            <li>写真追加納品：10枚ごと＋¥2,000 / 全データ納品：＋¥5,000</li>
+            <li>出張費：新潟市内／東京都内無料、その他＋交通費実費</li>
+            <li>30秒ショート動画：＋¥3,000</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">作例ギャラリー</h2>
+        <p class="section-sub">人物の自然な表情、光のにおい、背景の空気感まで。
+        </p>
+        <div class="gallery">
+          <img src="https://placehold.co/600x800?text=Portrait" alt="ポートレート作例" />
+          <img src="https://placehold.co/600x800?text=Couple" alt="カップル作例" />
+          <img src="https://placehold.co/600x800?text=Street" alt="街スナップ作例" />
+          <img src="https://placehold.co/600x800?text=Product" alt="商品作例" />
+          <img src="https://placehold.co/600x800?text=Cafe" alt="カフェ作例" />
+          <img src="https://placehold.co/600x800?text=Travel" alt="旅スナップ作例" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Flow -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">ご依頼の流れ</h2>
+        <div class="flow">
+          <div class="step"><div class="n">1</div><h4>お問い合わせ</h4><p>DMまたはフォームで日時・場所の希望を送ってね。</p></div>
+          <div class="step"><div class="n">2</div><h4>打ち合わせ</h4><p>服装や雰囲気、参考写真を共有してイメージ合わせ。</p></div>
+          <div class="step"><div class="n">3</div><h4>撮影</h4><p>リラックスして、会話しながら自然体で撮るよ。</p></div>
+          <div class="step"><div class="n">4</div><h4>編集＆納品</h4><p>オンライン納品。急ぎの相談もOK！</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">お客様の声</h2>
+        <div class="reviews">
+          <div class="quote"><p>「自然な笑顔を引き出してくれて、写真が苦手でも楽しく撮れました！」</p></div>
+          <div class="quote"><p>「納品が早くて、SNSの反応もめっちゃ良かった！」</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">空き状況・予約</h2>
+        <p class="section-sub">まずは気軽に相談してね。DMでもフォームでもOK。</p>
+        <div class="cta">
+          <a class="btn" href="https://www.instagram.com/ayataka.photolife/" target="_blank" rel="noopener">InstagramでDM</a>
+          <a class="btn secondary" href="#" onclick="alert('予約フォームのURLを設定してね！')">予約フォーム</a>
+          <a class="btn secondary" href="mailto:hello@example.com">メールで相談</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <small style="color:var(--muted)">© 2025 あやたかの写真暮らし</small>
+        <div class="footer-cta">
+          <a class="btn secondary" href="#plans">料金を見る</a>
+          <a class="btn" href="#contact">今すぐ相談</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
